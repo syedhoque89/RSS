@@ -8,31 +8,30 @@ using Akavache;
 using Autofac;
 using Newtonsoft.Json;
 using RSS.Bootstrapper;
+using RSS.Dto;
 
 namespace RSS.Services
 {
 	public class UKNewsService : IUKNewsService
 	{
-		IHttpClientFactory client { get; set; }
-		const string url = "https://feeds.bbci.co.uk/news/uk/rss.xml​";
+		public IHttpClientFactory Client { get; set; }
 
 		public UKNewsService ()
 		{
 			Bootstrap.Container.InjectUnsetProperties(this);
 		}
 
-		public IObservable<IEnumerable<object>> Get()
+		public IObservable<IEnumerable<NewsItem>> Get(string url)
 		{
 			var offset = DateTimeOffset.UtcNow.AddHours(5);
 
-			var url = "api/status/weekend";
 			return BlobCache.UserAccount.GetOrFetchObject(url, async () => await GetRemoteNews(url),
 														  offset);
 		}
 
-		async Task<IEnumerable<Object>> GetRemoteNews(string url)
+		public async Task<IEnumerable<NewsItem>> GetRemoteNews(string url)
 		{
-			using (var response = await client.Create().GetAsync(url,
+			using (var response = await Client.Create().GetAsync(url,
 																 new CancellationToken()).ConfigureAwait(false))
 			{
 				response.EnsureSuccessStatusCode();
@@ -43,21 +42,22 @@ namespace RSS.Services
 				{
 					var doc = new XmlDocument();
 					doc.LoadXml(xml);
-					var jsonText = JsonConvert.SerializeXmlNode(doc);
-					return null;
+					var jsonString = JsonConvert.SerializeXmlNode(doc);
+					return UkNewsDto.FromJson(jsonString).Rss.Channel.NewsItem;
 				}
 				catch (Exception ex)
 				{
 					Debug.WriteLine(ex);
 				}
 
-				return null;
+				return new List<NewsItem>();
 			}
 		}
 	}
 
 	public interface  IUKNewsService
 	{
-		IObservable<IEnumerable<object>> Get();
+		IObservable<IEnumerable<NewsItem>> Get(string url);
+		Task<IEnumerable<NewsItem>> GetRemoteNews(string url);
 	}
 }

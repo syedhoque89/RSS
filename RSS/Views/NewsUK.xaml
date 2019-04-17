@@ -1,15 +1,60 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml
+    version="1.0"
+    encoding="UTF-8"?>
+
 <ContentPage
-	xmlns="http://xamarin.com/schemas/2014/forms"
-	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-	x:Class="RSS.Views.NewsUK">
-	<ContentPage.Content>
-		<StackLayout>
-			<!-- Place new controls here -->
-			<Label
-				Text="NewsUK"
-				HorizontalOptions="Center"
-				VerticalOptions="CenterAndExpand" />
-		</StackLayout>
-	</ContentPage.Content>
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="RSS.Views.NewsUK"
+    Title="News UK">
+    <ContentPage.Content>
+        <StackLayout>
+            <ListView
+                SeparatorColor="Transparent"
+                IsPullToRefreshEnabled="True"
+                IsRefreshing="{Binding IsBusy}"
+                RefreshCommand="{Binding RefreshCommand}"
+                ItemsSource="{Binding NewsItems}"
+                HasUnevenRows="True">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition
+                                        Height="Auto" />
+                                    <RowDefinition
+                                        Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition
+                                        Width="100" />
+                                    <ColumnDefinition
+                                        Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Image
+                                    Grid.Column="0"
+                                    Grid.Row="0"
+                                    Grid.RowSpan="2"
+                                    HeightRequest="100"
+                                    WidthRequest="100"
+                                    Aspect="AspectFill"
+                                    Source="{Binding MediaThumbnail.Url}" />
+                                <Label
+                                    Grid.Row="0"
+                                    Grid.Column="1"
+                                    FontFamily="{StaticResource RobotoBoldFont}"
+                                    FontAttributes="Bold"
+                                    Text="{Binding Title.Text}" />
+                                <Label
+                                    Grid.Row="1"
+                                    Grid.Column="1"
+                                    Text="{Binding Description.Text}" />
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
 </ContentPage>
