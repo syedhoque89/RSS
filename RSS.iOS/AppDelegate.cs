@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-
+﻿using FFImageLoading.Forms.Touch;
+using FFImageLoading.Svg.Forms;
 using Foundation;
 using UIKit;
 
@@ -24,6 +22,9 @@ namespace RSS.iOS
 		{
 			Xamarin.Calabash.Start();
 			global::Xamarin.Forms.Forms.Init();
+			FFImageLoading.Forms.Platform.CachedImageRenderer.Init();
+			var ignore = typeof(SvgCachedImage);
+
 			LoadApplication(new App());
 
 			return base.FinishedLaunching(app, options);

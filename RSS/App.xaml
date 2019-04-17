@@ -1,8 +1,78 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml
+    version="1.0"
+    encoding="utf-8"?>
+
 <Application
-	xmlns="http://xamarin.com/schemas/2014/forms"
-	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-	x:Class="RSS.App">
-	<Application.Resources>
-	</Application.Resources>
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="RSS.App">
+    <Application.Resources>
+        <!-- Colours -->
+        <Color
+            x:Key="Primary">
+            #2196F3
+        </Color>
+        <Color
+            x:Key="PrimaryDark">
+            #1976D2
+        </Color>
+        <Color
+            x:Key="Accent">
+            #96d1ff
+        </Color>
+        <Color
+            x:Key="LightBackgroundColor">
+            #FAFAFA
+        </Color>
+        <Color
+            x:Key="DarkBackgroundColor">
+            #C0C0C0
+        </Color>
+        <Color
+            x:Key="MediumGrayTextColor">
+            #4d4d4d
+        </Color>
+        <Color
+            x:Key="LightTextColor">
+            #999999
+        </Color>
+        <Color
+            x:Key="GraySubtitleColor">
+            #9a9797
+        </Color>
+        <Color
+            x:Key="BottomBarSelectedTextColor">
+            #B7D0E7
+        </Color>
+        <!-- Styles -->
+        <OnPlatform
+            x:Key="FontAwesomeSolid"
+            x:TypeArguments="x:String"
+            iOS="Font Awesome 5 Free"
+            Android="fa-solid-900.ttf#Font Awesome 5 Free Solid" />
+        <OnPlatform
+            x:Key="RobotoLightFont"
+            x:TypeArguments="x:String"
+            iOS="Roboto-Light"
+            Android="Roboto-Light.ttf#Roboto-Light" />
+        <OnPlatform
+            x:Key="RobotoRegularFont"
+            x:TypeArguments="x:String"
+            iOS="Roboto-Regular"
+            Android="Roboto-Regular.ttf#Roboto-Regular" />
+        <OnPlatform
+            x:Key="RobotoBoldFont"
+            x:TypeArguments="x:String"
+            iOS="Roboto-Bold"
+            Android="Roboto-Bold.ttf#Roboto-Bold" />
+        <Style
+            TargetType="Label">
+            <Setter
+                Property="FontFamily"
+                Value="{StaticResource RobotoRegularFont}" />
+            <Setter
+                Property="TextColor"
+                Value="Black" />
+        </Style>
+    </Application.Resources>
 </Application>

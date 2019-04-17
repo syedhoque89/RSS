@@ -1,4 +1,5 @@
 ﻿using System;
+using Akavache;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -9,7 +10,7 @@ namespace RSS
 		public App()
 		{
 			InitializeComponent();
-
+			BlobCache.ApplicationName = "RSS";
 			MainPage = new MainPage();
 		}
 

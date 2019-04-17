@@ -1,14 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ContentPage
+<TabbedPage
 	xmlns="http://xamarin.com/schemas/2014/forms"
 	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
 	xmlns:local="clr-namespace:RSS"
 	x:Class="RSS.MainPage">
-	<StackLayout>
-		<!-- Place new controls here -->
-		<Label
-			Text="Welcome to Xamarin.Forms!"
-			HorizontalOptions="Center"
-			VerticalOptions="CenterAndExpand" />
-	</StackLayout>
-</ContentPage>
+	<local:TodayPage />
+	<NavigationPage Title="Schedule" Icon="schedule.png">
+		<x:Arguments>
+			<local:SchedulePage />
+		</x:Arguments>
+	</NavigationPage>
+</TabbedPage>
