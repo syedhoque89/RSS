@@ -8,6 +8,7 @@ using Autofac;
 using MvvmHelpers;
 using RSS.Bootstrapper;
 using RSS.Dto;
+using RSS.Models;
 using RSS.Services;
 using Xamarin.Forms;
 
@@ -15,16 +16,18 @@ namespace RSS.Views
 {
 	public class NewsUKViewModel : BaseViewModel
 	{
-		public ObservableRangeCollection<NewsItem> NewsItems { get; set; }
+		public ObservableRangeCollection<News> NewsItems { get; set; }
+
 		public IUKNewsService UkNewsService { get; set; }
 		public ICommand LoadItemsCommand { get; set; }
 		public ICommand RefreshCommand { get; set; }
+
 		IDisposable newsServiceSubscription;
 
 		public NewsUKViewModel()
 		{
 			Bootstrap.Container.InjectUnsetProperties(this);
-			NewsItems = new ObservableRangeCollection<NewsItem>();
+			NewsItems = new ObservableRangeCollection<News>();
 			LoadItemsCommand = new Command(ExecuteLoadItemsCommand);
 			RefreshCommand = new Command(ExecuteLoadItemsCommand);
 		}
@@ -50,10 +53,24 @@ namespace RSS.Views
 			void OnNext(IEnumerable<NewsItem> items)
 			{
 				var newsItems = items.ToList();
-				if (newsItems.Any())
+				if (!newsItems.Any())
+					return;
+
+				//newsItems = items.OrderByDescending(i => i.PubDate).ToList();
+				var news = new List<News>();
+
+				foreach (var newsItem in newsItems)
 				{
-					NewsItems.ReplaceRange(newsItems);
+					news.Add(new News
+					{
+						Title = newsItem.Title.Text,
+						Summary = newsItem.Description.Text,
+						Thumbnail = newsItem.MediaThumbnail.Url,
+						Url = newsItem.Link.AbsoluteUri
+					});
 				}
+
+				NewsItems.ReplaceRange(news);
 			}
 
 			void OnError(Exception ex)

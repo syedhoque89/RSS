@@ -27,5 +27,7 @@
   <ItemGroup>
     <Folder Include="Views" />
     <Folder Include="Views\" />
+    <Folder Include="Views\Templates" />
+    <Folder Include="Views\Templates\" />
   </ItemGroup>
 </Project>

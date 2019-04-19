@@ -1,14 +1,18 @@
 ﻿using Android.App;
 using Android.Content.PM;
-using Android.Runtime;
 using Android.OS;
+using Android.Runtime;
+using FFImageLoading.Forms.Platform;
 using FFImageLoading.Svg.Forms;
+using Xamarin.Forms;
+using Xamarin.Forms.Platform.Android;
+using Platform = Xamarin.Essentials.Platform;
 
 namespace RSS.Droid
 {
 	[Activity(Label = "RSS", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = true,
 		ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
-	public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
+	public class MainActivity : FormsAppCompatActivity
 	{
 		protected override void OnCreate(Bundle savedInstanceState)
 		{
@@ -17,19 +21,19 @@ namespace RSS.Droid
 
 			base.OnCreate(savedInstanceState);
 
-			Xamarin.Essentials.Platform.Init(this, savedInstanceState);
-			global::Xamarin.Forms.Forms.SetFlags("FastRenderers_Experimental");
-			global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
-			FFImageLoading.Forms.Platform.CachedImageRenderer.Init(true);
+			Platform.Init(this, savedInstanceState);
+			Forms.SetFlags("FastRenderers_Experimental");
+			Forms.Init(this, savedInstanceState);
+			CachedImageRenderer.Init(true);
 			var ignore = typeof(SvgCachedImage);
-
+			FormsMaterial.Init();
 			LoadApplication(new App());
 		}
 
 		public override void OnRequestPermissionsResult(int requestCode, string[] permissions,
-														[GeneratedEnum] Android.Content.PM.Permission[] grantResults)
+														[GeneratedEnum] Permission[] grantResults)
 		{
-			Xamarin.Essentials.Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+			Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);
 
 			base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
 		}

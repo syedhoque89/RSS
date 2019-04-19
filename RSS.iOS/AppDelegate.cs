@@ -1,7 +1,8 @@
-﻿using FFImageLoading.Forms.Touch;
-using FFImageLoading.Svg.Forms;
+﻿using FFImageLoading.Svg.Forms;
 using Foundation;
 using UIKit;
+using Xamarin.Forms;
+using Xamarin.Forms.Platform.iOS;
 
 namespace RSS.iOS
 {
@@ -9,7 +10,7 @@ namespace RSS.iOS
 	// User Interface of the application, as well as listening (and optionally responding) to 
 	// application events from iOS.
 	[Register("AppDelegate")]
-	public partial class AppDelegate : global::Xamarin.Forms.Platform.iOS.FormsApplicationDelegate
+	public partial class AppDelegate : FormsApplicationDelegate
 	{
 		//
 		// This method is invoked when the application has loaded and is ready to run. In this 
@@ -21,12 +22,12 @@ namespace RSS.iOS
 		public override bool FinishedLaunching(UIApplication app, NSDictionary options)
 		{
 			Xamarin.Calabash.Start();
-			global::Xamarin.Forms.Forms.Init();
+			Forms.Init();
 			FFImageLoading.Forms.Platform.CachedImageRenderer.Init();
 			var ignore = typeof(SvgCachedImage);
-
+			FormsMaterial.Init();
 			LoadApplication(new App());
-
+			UITabBar.Appearance.TintColor = ((Color)Xamarin.Forms.Application.Current.Resources["PrimaryColor"]).ToUIColor();
 			return base.FinishedLaunching(app, options);
 		}
 	}

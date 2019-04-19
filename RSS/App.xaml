@@ -9,11 +9,11 @@
     <Application.Resources>
         <!-- Colours -->
         <Color
-            x:Key="Primary">
-            #2196F3
+            x:Key="PrimaryColor">
+            #bb1919
         </Color>
         <Color
-            x:Key="PrimaryDark">
+            x:Key="PrimaryDarkColor">
             #1976D2
         </Color>
         <Color
@@ -37,8 +37,8 @@
             #999999
         </Color>
         <Color
-            x:Key="GraySubtitleColor">
-            #9a9797
+            x:Key="OfflineColor">
+            DarkGray
         </Color>
         <Color
             x:Key="BottomBarSelectedTextColor">
@@ -47,9 +47,10 @@
         <!-- Styles -->
         <OnPlatform
             x:Key="FontAwesomeSolid"
-            x:TypeArguments="x:String"
-            iOS="Font Awesome 5 Free"
-            Android="fa-solid-900.ttf#Font Awesome 5 Free Solid" />
+            x:TypeArguments="x:String">
+            <On Platform="iOS" Value="Font Awesome 5 Free" />
+            <On Platform="Android" Value="fa-solid-900.ttf#Font Awesome 5 Free Solid" />
+        </OnPlatform>
         <OnPlatform
             x:Key="RobotoLightFont"
             x:TypeArguments="x:String"

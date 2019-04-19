@@ -5,53 +5,27 @@
 <ContentPage
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:androidSpecific="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
+    xmlns:templates="clr-namespace:RSS.Views.Templates;assembly=RSS"
     x:Class="RSS.Views.NewsUK"
     Title="News UK">
     <ContentPage.Content>
-        <StackLayout>
+        <StackLayout
+            CompressedLayout.IsHeadless="True">
             <ListView
+                CachingStrategy="RecycleElement"
                 SeparatorColor="Transparent"
                 IsPullToRefreshEnabled="True"
                 IsRefreshing="{Binding IsBusy}"
                 RefreshCommand="{Binding RefreshCommand}"
                 ItemsSource="{Binding NewsItems}"
+                ItemSelected="Handle_ItemSelected"
+                androidSpecific:ListView.IsFastScrollEnabled="True"
                 HasUnevenRows="True">
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <ViewCell>
-                            <Grid>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition
-                                        Height="Auto" />
-                                    <RowDefinition
-                                        Height="Auto" />
-                                </Grid.RowDefinitions>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition
-                                        Width="100" />
-                                    <ColumnDefinition
-                                        Width="*" />
-                                </Grid.ColumnDefinitions>
-                                <Image
-                                    Grid.Column="0"
-                                    Grid.Row="0"
-                                    Grid.RowSpan="2"
-                                    HeightRequest="100"
-                                    WidthRequest="100"
-                                    Aspect="AspectFill"
-                                    Source="{Binding MediaThumbnail.Url}" />
-                                <Label
-                                    Grid.Row="0"
-                                    Grid.Column="1"
-                                    FontFamily="{StaticResource RobotoBoldFont}"
-                                    FontAttributes="Bold"
-                                    Text="{Binding Title.Text}" />
-                                <Label
-                                    Grid.Row="1"
-                                    Grid.Column="1"
-                                    Text="{Binding Description.Text}" />
-                            </Grid>
-                        </ViewCell>
+                        <templates:NewsItemTemplate
+                            BindingContext="{Binding .}" />
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>

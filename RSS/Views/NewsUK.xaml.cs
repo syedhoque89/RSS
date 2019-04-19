@@ -1,4 +1,6 @@
-﻿namespace RSS.Views
+﻿using Xamarin.Forms;
+
+namespace RSS.Views
 {
 	public partial class NewsUK
 	{
@@ -20,6 +22,11 @@
 		{
 			base.OnDisappearing();
 			viewModel?.OnDisappearing();
+		}
+
+		void Handle_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+		{
+			((ListView) sender).SelectedItem = null;
 		}
 	}
 }
