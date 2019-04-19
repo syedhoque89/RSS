@@ -1,4 +1,4 @@
-﻿<?xml
+<?xml
     version="1.0"
     encoding="utf-8"?>
 
@@ -7,16 +7,10 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:RSS.Views"
     x:Class="RSS.MainPage">
-    <NavigationPage
-        Title="News UK">
-        <x:Arguments>
-            <local:NewsUK />
-        </x:Arguments>
-    </NavigationPage>
-    <NavigationPage
-        Title="News Tech">
-        <x:Arguments>
-            <local:NewsTech />
-        </x:Arguments>
-    </NavigationPage>
+    <TabbedPage.Children>
+        <local:NewsUK
+            Icon="placeholder" />
+        <local:NewsTech
+            Icon="placeholder" />
+    </TabbedPage.Children>
 </TabbedPage>
