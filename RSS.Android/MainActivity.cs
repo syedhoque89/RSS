@@ -26,7 +26,7 @@ namespace RSS.Droid
 			Forms.Init(this, savedInstanceState);
 			CachedImageRenderer.Init(true);
 			var ignore = typeof(SvgCachedImage);
-			FormsMaterial.Init();
+			FormsMaterial.Init(this, savedInstanceState);
 			LoadApplication(new App());
 		}
 

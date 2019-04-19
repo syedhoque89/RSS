@@ -38,7 +38,6 @@
                 DownsampleToViewSize="true"
                 FadeAnimationEnabled="True"
                 HorizontalOptions="FillAndExpand"
-                LoadingPlaceholder="placeholder"
                 Aspect="AspectFill"
                 Source="{Binding Thumbnail}">
                 <forms:CachedImage.GestureRecognizers>
