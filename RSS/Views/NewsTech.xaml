@@ -5,15 +5,36 @@
 <ContentPage
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:templates="clr-namespace:RSS.Views.Templates;assembly=RSS"
+    xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
+    xmlns:r="clr-namespace:RSS.Localization;assembly=RSS"
     x:Class="RSS.Views.NewsTech"
-    Title="News Tech">
+    Title="{x:Static r:Resources.NewsTechTitle}">
     <ContentPage.Content>
-        <StackLayout>
-            <!-- Place new controls here -->
-            <Label
-                Text="NewsTech"
-                HorizontalOptions="Center"
-                VerticalOptions="CenterAndExpand" />
-        </StackLayout>
+        <Grid
+            Padding="0"
+            CompressedLayout.IsHeadless="True">
+            <ListView
+                CachingStrategy="RecycleElement"
+                SeparatorColor="Transparent"
+                IsPullToRefreshEnabled="True"
+                IsRefreshing="{Binding IsBusy}"
+                RefreshCommand="{Binding RefreshCommand}"
+                ItemsSource="{Binding NewsItems}"
+                ItemSelected="Handle_ItemSelected"
+                android:ListView.IsFastScrollEnabled="True"
+                HasUnevenRows="True"
+                IsVisible="{Binding ErrorOccurred, Converter={StaticResource BoolReverseConverterKey}}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <templates:NewsItemTemplate
+                            BindingContext="{Binding .}" />
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <templates:ErrorViewTemplate
+                IsVisible="{Binding ErrorOccurred}"
+                BindingContext="{Binding .}" />
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

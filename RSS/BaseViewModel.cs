@@ -7,6 +7,7 @@ namespace RSS
 	public abstract class BaseViewModel
 	{
 		public bool IsBusy { get; set; }
+		public bool ErrorOccurred { get; set; }
 
 		public abstract void OnAppearing();
 		public abstract void OnDisappearing();

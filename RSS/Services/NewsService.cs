@@ -8,15 +8,15 @@ using Akavache;
 using Autofac;
 using Newtonsoft.Json;
 using RSS.Bootstrapper;
-using RSS.Dto;
+using RSS.Dtos;
 
 namespace RSS.Services
 {
-	public class UKNewsService : IUKNewsService
+	public class NewsService : INewsService
 	{
 		public IHttpClientFactory Client { get; set; }
 
-		public UKNewsService ()
+		public NewsService ()
 		{
 			Bootstrap.Container.InjectUnsetProperties(this);
 		}
@@ -42,8 +42,10 @@ namespace RSS.Services
 				{
 					var doc = new XmlDocument();
 					doc.LoadXml(xml);
+
 					var jsonString = JsonConvert.SerializeXmlNode(doc);
-					return UkNewsDto.FromJson(jsonString).Rss.Channel.NewsItem;
+
+					return NewsDto.FromJson(jsonString).Rss.Channel.NewsItem;
 				}
 				catch (Exception ex)
 				{
@@ -55,9 +57,8 @@ namespace RSS.Services
 		}
 	}
 
-	public interface  IUKNewsService
+	public interface  INewsService
 	{
 		IObservable<IEnumerable<NewsItem>> Get(string url);
-		Task<IEnumerable<NewsItem>> GetRemoteNews(string url);
 	}
 }

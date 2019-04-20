@@ -1,5 +1,7 @@
 using Autofac;
+using RSS.Commands;
 using RSS.Services;
+using XF = Xamarin.Forms;
 
 namespace RSS.Bootstrapper
 {
@@ -11,14 +13,11 @@ namespace RSS.Bootstrapper
 		{
 			var builder = new ContainerBuilder();
 
-			/*
-			var onPlatformHapticService = XF.DependencyService.Get<IHapticService>();
-			var onPlatformMapService = XF.DependencyService.Get<IMapService>();
-			builder.RegisterInstance(onPlatformMapService).AsImplementedInterfaces();
-			*/
-
-			builder.RegisterType<UKNewsService>().AsImplementedInterfaces();
 			builder.RegisterType<HttpClientService>().AsImplementedInterfaces();
+			builder.RegisterType<NewsService>().AsImplementedInterfaces();
+
+			var displayToastCommand = XF.DependencyService.Get<IDisplayToastCommand>();
+			builder.RegisterInstance(displayToastCommand).AsImplementedInterfaces();
 
 			Container = builder.Build();
 		}

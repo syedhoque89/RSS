@@ -4,6 +4,7 @@ using Android.OS;
 using Android.Runtime;
 using FFImageLoading.Forms.Platform;
 using FFImageLoading.Svg.Forms;
+using Lottie.Forms.Droid;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
 using Platform = Xamarin.Essentials.Platform;
@@ -27,6 +28,7 @@ namespace RSS.Droid
 			CachedImageRenderer.Init(true);
 			var ignore = typeof(SvgCachedImage);
 			FormsMaterial.Init(this, savedInstanceState);
+			AnimationViewRenderer.Init();
 			LoadApplication(new App());
 		}
 

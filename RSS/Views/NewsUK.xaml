@@ -1,16 +1,18 @@
-﻿<?xml
+<?xml
     version="1.0"
     encoding="UTF-8"?>
 
 <ContentPage
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:androidSpecific="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
+    xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
     xmlns:templates="clr-namespace:RSS.Views.Templates;assembly=RSS"
+    xmlns:r="clr-namespace:RSS.Localization;assembly=RSS"
     x:Class="RSS.Views.NewsUK"
-    Title="News UK">
+    Title="{x:Static r:Resources.NewsUKTitle}">
     <ContentPage.Content>
-        <StackLayout
+        <Grid
+            Padding="0"
             CompressedLayout.IsHeadless="True">
             <ListView
                 CachingStrategy="RecycleElement"
@@ -20,8 +22,9 @@
                 RefreshCommand="{Binding RefreshCommand}"
                 ItemsSource="{Binding NewsItems}"
                 ItemSelected="Handle_ItemSelected"
-                androidSpecific:ListView.IsFastScrollEnabled="True"
-                HasUnevenRows="True">
+                android:ListView.IsFastScrollEnabled="True"
+                HasUnevenRows="True"
+                IsVisible="{Binding ErrorOccurred, Converter={StaticResource BoolReverseConverterKey}}">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <templates:NewsItemTemplate
@@ -29,6 +32,9 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-        </StackLayout>
+            <templates:ErrorViewTemplate
+                IsVisible="{Binding ErrorOccurred}" 
+                BindingContext="{Binding .}"/>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

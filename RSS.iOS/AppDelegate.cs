@@ -1,5 +1,6 @@
 ﻿using FFImageLoading.Svg.Forms;
 using Foundation;
+using Lottie.Forms.iOS.Renderers;
 using UIKit;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.iOS;
@@ -26,6 +27,7 @@ namespace RSS.iOS
 			FFImageLoading.Forms.Platform.CachedImageRenderer.Init();
 			var ignore = typeof(SvgCachedImage);
 			FormsMaterial.Init();
+			AnimationViewRenderer.Init();
 			LoadApplication(new App());
 			UITabBar.Appearance.TintColor = ((Color)Xamarin.Forms.Application.Current.Resources["PrimaryColor"]).ToUIColor();
 			return base.FinishedLaunching(app, options);

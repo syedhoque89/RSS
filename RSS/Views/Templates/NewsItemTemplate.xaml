@@ -16,11 +16,6 @@
         Padding="10"
         RowSpacing="0"
         ColumnSpacing="0">
-        <!--<Grid.GestureRecognizers>
-            <TapGestureRecognizer
-                Command="{Binding NavigateToUrlCommand}"
-                CommandParameter="{Binding Url}" />
-        </Grid.GestureRecognizers>-->
         <Grid.RowDefinitions>
             <RowDefinition
                 Height="Auto" />
@@ -110,12 +105,12 @@
                 <Label
                     FontSize="29"
                     HorizontalOptions="EndAndExpand"
-                    TextColor="{StaticResource OfflineColor}"
+                    TextColor="{Binding SavedForOffline, Converter={StaticResource BoolToOfflineColorConverterKey}}"
                     FontFamily="{StaticResource FontAwesomeSolid}"
                     Text="{x:Static styles:FontAwesomeIcons.Download}">
                     <Label.GestureRecognizers>
                         <TapGestureRecognizer
-                            Command="{Binding DownloadCommand}"
+                            Command="{Binding SaveOfflineCommand}"
                             CommandParameter="{Binding Url}" />
                     </Label.GestureRecognizers>
                 </Label>

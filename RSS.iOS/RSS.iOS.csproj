@@ -64,6 +64,7 @@
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Commands\DisplayToastCommand.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
     <None Include="Entitlements.plist" />
@@ -128,6 +129,8 @@
   <ItemGroup>
     <PackageReference Include="akavache" Version="6.5.1" />
     <PackageReference Include="Autofac" Version="4.9.2" />
+    <PackageReference Include="Com.Airbnb.iOS.Lottie" Version="2.5.7" />
+    <PackageReference Include="Com.Airbnb.Xamarin.Forms.Lottie" Version="2.7.1" />
     <PackageReference Include="Fody" Version="4.2.1" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.1" />
     <PackageReference Include="PropertyChanged.Fody" Version="2.6.1" />
@@ -152,13 +155,14 @@
     <BundleResource Include="Resources\Roboto-Light.ttf" />
     <BundleResource Include="Resources\Roboto-Bold.ttf" />
     <BundleResource Include="Resources\fa-solid-900.ttf" />
+    <BundleResource Include="Resources\world_locations.json" />
+    <BundleResource Include="Resources\favourite_circle_animation.json" />
+    <BundleResource Include="Resources\network_fail.json" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Assets.xcassets\placeholder.imageset\" />
   </ItemGroup>
   <ItemGroup>
-    <ImageAsset Include="..\..\..\Downloads\placeholder.pdf">
-      <Link>Assets.xcassets/placeholder.imageset/placeholder.pdf</Link>
-    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\placeholder.imageset\placeholder.pdf" />
   </ItemGroup>
 </Project>

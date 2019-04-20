@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Reactive.Linq;
 using System.Threading;
@@ -7,7 +8,7 @@ using System.Windows.Input;
 using Autofac;
 using MvvmHelpers;
 using RSS.Bootstrapper;
-using RSS.Dto;
+using RSS.Dtos;
 using RSS.Models;
 using RSS.Services;
 using Xamarin.Forms;
@@ -18,9 +19,10 @@ namespace RSS.Views
 	{
 		public ObservableRangeCollection<News> NewsItems { get; set; }
 
-		public IUKNewsService UkNewsService { get; set; }
+		public INewsService NewsService { get; set; }
 		public ICommand LoadItemsCommand { get; set; }
 		public ICommand RefreshCommand { get; set; }
+		public ICommand RetryCommand { get; set; }
 
 		IDisposable newsServiceSubscription;
 
@@ -30,6 +32,7 @@ namespace RSS.Views
 			NewsItems = new ObservableRangeCollection<News>();
 			LoadItemsCommand = new Command(ExecuteLoadItemsCommand);
 			RefreshCommand = new Command(ExecuteLoadItemsCommand);
+			RetryCommand = new Command(ExecuteLoadItemsCommand);
 		}
 
 		public override void OnAppearing()
@@ -46,7 +49,7 @@ namespace RSS.Views
 		{
 			IsBusy = true;
 
-			newsServiceSubscription = UkNewsService.Get("https://feeds.bbci.co.uk/news/uk/rss.xml")
+			newsServiceSubscription = NewsService.Get("https://feeds.bbci.co.uk/news/uk/rss.xml")
 												   .ObserveOn(SynchronizationContext.Current)
 												   .Subscribe(OnNext, OnError, OnComplete);
 
@@ -76,11 +79,15 @@ namespace RSS.Views
 			void OnError(Exception ex)
 			{
 				IsBusy = false;
+				ErrorOccurred = true;
+				Debug.WriteLine(ex);
 			}
 
 			void OnComplete()
 			{
 				IsBusy = false;
+				
+				ErrorOccurred &= !NewsItems.Any();
 			}
 		}
 	}

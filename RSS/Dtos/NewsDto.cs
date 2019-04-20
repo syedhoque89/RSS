@@ -5,9 +5,9 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using J = Newtonsoft.Json.JsonPropertyAttribute;
 
-namespace RSS.Dto
+namespace RSS.Dtos
 {
-	public partial class UkNewsDto
+	public partial class NewsDto
 	{
 		[J("?xml")] public Xml Xml { get; set; }
 		[J("?xml-stylesheet")] public string XmlStylesheet { get; set; }
@@ -56,11 +56,11 @@ namespace RSS.Dto
 
 	public partial class NewsItem
 	{
-		[J("title")]           public Content Title { get; set; }
-		[J("description")]     public Content Description { get; set; }
-		[J("link")]            public Uri Link { get; set; }
-		[J("guid")]            public GuidClass Guid { get; set; }
-		[J("pubDate")]         public string PubDate { get; set; }
+		[J("title")] public Content Title { get; set; }
+		[J("description")] public Content Description { get; set; }
+		[J("link")] public Uri Link { get; set; }
+		[J("guid")] public GuidClass Guid { get; set; }
+		[J("pubDate")] public string PubDate { get; set; }
 		[J("media:thumbnail")] public MediaThumbnail MediaThumbnail { get; set; }
 	}
 
@@ -70,7 +70,7 @@ namespace RSS.Dto
 		[JsonConverter(typeof(PurpleParseStringConverter))]
 		public bool IsPermaLink { get; set; }
 
-		[J("#text")]                                                           public Uri Text { get; set; }
+		[J("#text")] public Uri Text { get; set; }
 	}
 
 	public partial class MediaThumbnail
@@ -88,19 +88,19 @@ namespace RSS.Dto
 
 	public partial class Xml
 	{
-		[J("@version")]  public string Version { get; set; }
+		[J("@version")] public string Version { get; set; }
 		[J("@encoding")] public string Encoding { get; set; }
 	}
 
-	public partial class UkNewsDto
+	public partial class NewsDto
 	{
-		public static UkNewsDto FromJson(string json) =>
-			JsonConvert.DeserializeObject<UkNewsDto>(json, Converter.Settings);
+		public static NewsDto FromJson(string json) =>
+			JsonConvert.DeserializeObject<NewsDto>(json, Converter.Settings);
 	}
 
 	public static class Serialize
 	{
-		public static string ToJson(this UkNewsDto self) =>
+		public static string ToJson(this NewsDto self) =>
 			JsonConvert.SerializeObject(self, Converter.Settings);
 	}
 

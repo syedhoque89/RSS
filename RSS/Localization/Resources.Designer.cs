@@ -57,5 +57,29 @@ namespace RSS.Localization {
                 return ResourceManager.GetString("ShareTitle", resourceCulture);
             }
         }
+        
+        public static string NewsUKTitle {
+            get {
+                return ResourceManager.GetString("NewsUKTitle", resourceCulture);
+            }
+        }
+        
+        public static string NewsTechTitle {
+            get {
+                return ResourceManager.GetString("NewsTechTitle", resourceCulture);
+            }
+        }
+        
+        public static string RetryButtonText {
+            get {
+                return ResourceManager.GetString("RetryButtonText", resourceCulture);
+            }
+        }
+        
+        public static string ErrorLabelText {
+            get {
+                return ResourceManager.GetString("ErrorLabelText", resourceCulture);
+            }
+        }
     }
 }

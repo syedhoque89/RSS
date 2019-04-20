@@ -1,7 +1,8 @@
-﻿using System;
-using Akavache;
+﻿using Akavache;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+
+[assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 
 namespace RSS
 {

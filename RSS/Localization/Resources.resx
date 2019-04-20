@@ -33,4 +33,24 @@
             xml:space="preserve">
     <value>I saw this article on BBC</value>
   </data>
+    <data
+            name="NewsUKTitle"
+            xml:space="preserve">
+    <value>News UK</value>
+  </data>
+    <data
+            name="NewsTechTitle"
+            xml:space="preserve">
+    <value>News Tech</value>
+  </data>
+    <data
+            name="RetryButtonText"
+            xml:space="preserve">
+    <value>Please Retry</value>
+  </data>
+    <data
+            name="ErrorLabelText"
+            xml:space="preserve">
+    <value>Oh dear! Something went wrong...</value>
+  </data>
 </root>

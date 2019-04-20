@@ -5,6 +5,7 @@
 <Application
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:valueConverters="clr-namespace:RSS.ValueConverters;assembly=RSS"
     x:Class="RSS.App">
     <Application.Resources>
         <!-- Colours -->
@@ -41,6 +42,10 @@
             DarkGray
         </Color>
         <Color
+            x:Key="SavedColor">
+            #005307
+        </Color>
+        <Color
             x:Key="BottomBarSelectedTextColor">
             #B7D0E7
         </Color>
@@ -48,24 +53,43 @@
         <OnPlatform
             x:Key="FontAwesomeSolid"
             x:TypeArguments="x:String">
-            <On Platform="iOS" Value="Font Awesome 5 Free" />
-            <On Platform="Android" Value="fa-solid-900.ttf#Font Awesome 5 Free Solid" />
+            <On
+                Platform="iOS"
+                Value="Font Awesome 5 Free" />
+            <On
+                Platform="Android"
+                Value="fa-solid-900.ttf#Font Awesome 5 Free Solid" />
         </OnPlatform>
         <OnPlatform
             x:Key="RobotoLightFont"
-            x:TypeArguments="x:String"
-            iOS="Roboto-Light"
-            Android="Roboto-Light.ttf#Roboto-Light" />
+            x:TypeArguments="x:String">
+            <On
+                Platform="iOS"
+                Value="Roboto-Light" />
+            <On
+                Platform="Android"
+                Value="Roboto-Light.ttf#Roboto-Light" />
+        </OnPlatform>
         <OnPlatform
             x:Key="RobotoRegularFont"
-            x:TypeArguments="x:String"
-            iOS="Roboto-Regular"
-            Android="Roboto-Regular.ttf#Roboto-Regular" />
+            x:TypeArguments="x:String">
+            <On
+                Platform="iOS"
+                Value="Roboto-Regular" />
+            <On
+                Platform="Android"
+                Value="Roboto-Regular.ttf#Roboto-Regular" />
+        </OnPlatform>
         <OnPlatform
             x:Key="RobotoBoldFont"
-            x:TypeArguments="x:String"
-            iOS="Roboto-Bold"
-            Android="Roboto-Bold.ttf#Roboto-Bold" />
+            x:TypeArguments="x:String">
+            <On
+                Platform="iOS"
+                Value="Roboto-Bold" />
+            <On
+                Platform="Android"
+                Value="Roboto-Bold.ttf#Roboto-Bold" />
+        </OnPlatform>
         <Style
             TargetType="Label">
             <Setter
@@ -75,5 +99,10 @@
                 Property="TextColor"
                 Value="Black" />
         </Style>
+        <!-- Value Converters -->
+        <valueConverters:BoolReverseConverter
+            x:Key="BoolReverseConverterKey" />
+        <valueConverters:BoolToOfflineColorConverter
+            x:Key="BoolToOfflineColorConverterKey" />
     </Application.Resources>
 </Application>
