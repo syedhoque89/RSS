@@ -156,7 +156,6 @@
     <BundleResource Include="Resources\Roboto-Bold.ttf" />
     <BundleResource Include="Resources\fa-solid-900.ttf" />
     <BundleResource Include="Resources\world_locations.json" />
-    <BundleResource Include="Resources\favourite_circle_animation.json" />
     <BundleResource Include="Resources\network_fail.json" />
   </ItemGroup>
   <ItemGroup>
