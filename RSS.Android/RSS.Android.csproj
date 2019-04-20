@@ -82,6 +82,7 @@
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="LinkerPreserve.cs" />
+    <Compile Include="SplashActivity.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -106,6 +107,11 @@
     <AndroidResource Include="Resources\mipmap-xxxhdpi\icon.png" />
     <AndroidResource Include="Resources\mipmap-xxxhdpi\launcher_foreground.png" />
     <AndroidResource Include="Resources\drawable\placeholder.xml" />
+    <AndroidResource Include="Resources\drawable\splash.xml" />
+    <AndroidResource Include="Resources\drawable-hdpi\ic_splash.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\ic_splash.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_splash.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\Shape.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\drawable\" />

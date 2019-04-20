@@ -11,7 +11,9 @@ using Platform = Xamarin.Essentials.Platform;
 
 namespace RSS.Droid
 {
-	[Activity(Label = "RSS", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = true,
+	[Activity(Label = "RSS", 
+		Icon = "@mipmap/icon", 
+		Theme = "@style/MainTheme", 
 		ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
 	public class MainActivity : FormsAppCompatActivity
 	{
