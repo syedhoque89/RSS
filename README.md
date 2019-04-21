@@ -7,4 +7,6 @@ For iOS, the app targets iOS 11. However, to build and run on a simulator you wi
 
 Built using VS for Mac 2019 Community Edition and JetBrains Rider 2018.3.4
 
-Credit goes to all the respective authors from https://www.flaticon.com for the iconography
+Credit goes to all the respective authors from https://www.flaticon.com for the iconography.
+
+A showcase video can be found here: https://1drv.ms/v/s!AmSrfG6zJsWbhfhikn9FMTh99lHIJg
