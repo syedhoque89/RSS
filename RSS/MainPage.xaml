@@ -13,8 +13,8 @@
     x:Class="RSS.MainPage">
     <TabbedPage.Children>
         <local:NewsUK
-            Icon="placeholder" />
+            Icon="news" />
         <local:NewsTech
-            Icon="placeholder" />
+            Icon="tech" />
     </TabbedPage.Children>
 </TabbedPage>

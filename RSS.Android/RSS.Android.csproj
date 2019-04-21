@@ -112,6 +112,13 @@
     <AndroidResource Include="Resources\drawable-xhdpi\ic_splash.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\ic_splash.png" />
     <AndroidResource Include="Resources\drawable-xxxhdpi\Shape.png" />
+    <AndroidResource Include="Resources\mipmap-hdpi\ic_launcher.png" />
+    <AndroidResource Include="Resources\mipmap-mdpi\ic_launcher.png" />
+    <AndroidResource Include="Resources\mipmap-xhdpi\ic_launcher.png" />
+    <AndroidResource Include="Resources\mipmap-xxhdpi\ic_launcher.png" />
+    <AndroidResource Include="Resources\mipmap-xxxhdpi\ic_launcher.png" />
+    <AndroidResource Include="Resources\drawable\tech.xml" />
+    <AndroidResource Include="Resources\drawable\news.xml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\drawable\" />

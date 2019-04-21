@@ -1,7 +1,4 @@
-<?xml
-    version="1.0"
-    encoding="UTF-8"?>
-
+<?xml version="1.0" encoding="UTF-8"?>
 <ViewCell
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
@@ -16,6 +13,11 @@
         Padding="10"
         RowSpacing="0"
         ColumnSpacing="0">
+        <Grid.GestureRecognizers>
+            <TapGestureRecognizer
+                Command="{Binding NavigateToUrlCommand}"
+                CommandParameter="{Binding Url}" />
+        </Grid.GestureRecognizers>
         <Grid.RowDefinitions>
             <RowDefinition
                 Height="Auto" />
@@ -35,17 +37,13 @@
                 HorizontalOptions="FillAndExpand"
                 Aspect="AspectFill"
                 Source="{Binding Thumbnail}">
-                <forms:CachedImage.GestureRecognizers>
-                    <TapGestureRecognizer
-                        Command="{Binding NavigateToUrlCommand}"
-                        CommandParameter="{Binding Url}" />
-                </forms:CachedImage.GestureRecognizers>
             </forms:CachedImage>
         </Frame>
         <StackLayout
             Grid.Row="1"
             Grid.Column="0"
             Spacing="0"
+            InputTransparent="true"
             CompressedLayout.IsHeadless="True">
             <Label
                 Margin="0,10,0,10"
@@ -56,27 +54,18 @@
                 LineBreakMode="TailTruncation"
                 MaxLines="2"
                 d:Text="Eventually, you do plan to have dinosaurs on your dinosaur tour, right?">
-                <Label.GestureRecognizers>
-                    <TapGestureRecognizer
-                        Command="{Binding NavigateToUrlCommand}"
-                        CommandParameter="{Binding Url}" />
-                </Label.GestureRecognizers>
             </Label>
             <Label
                 FontSize="13"
                 Text="{Binding Summary}"
                 LineBreakMode="TailTruncation"
                 MaxLines="3">
-                <Label.GestureRecognizers>
-                    <TapGestureRecognizer
-                        Command="{Binding NavigateToUrlCommand}"
-                        CommandParameter="{Binding Url}" />
-                </Label.GestureRecognizers>
             </Label>
             <StackLayout
                 Orientation="Horizontal"
                 Spacing="0"
-                Margin="0,15,0,0">
+                Margin="0,15,0,0"
+                InputTransparent="false">
                 <Label
                     FontSize="30"
                     HorizontalOptions="Start"

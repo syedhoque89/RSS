@@ -1,4 +1,4 @@
-﻿<?xml
+<?xml
     version="1.0"
     encoding="utf-8"?>
 
@@ -15,7 +15,7 @@
         </Color>
         <Color
             x:Key="PrimaryDarkColor">
-            #1976D2
+            #781010
         </Color>
         <Color
             x:Key="Accent">

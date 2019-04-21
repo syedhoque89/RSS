@@ -12,7 +12,7 @@ using Platform = Xamarin.Essentials.Platform;
 namespace RSS.Droid
 {
 	[Activity(Label = "RSS", 
-		Icon = "@mipmap/icon", 
+		Icon = "@mipmap/ic_launcher", 
 		Theme = "@style/MainTheme", 
 		ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
 	public class MainActivity : FormsAppCompatActivity

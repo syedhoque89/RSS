@@ -8,6 +8,8 @@ namespace RSS.Droid
 {
 	[Activity(Theme = "@style/MainTheme.Splash",
 			  MainLauncher = true,
+			  Label = "RSS",
+			  Icon = "@mipmap/ic_launcher",
 			  ScreenOrientation = ScreenOrientation.Portrait,
 			  ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation,
 			  NoHistory = true)]

@@ -5,9 +5,9 @@
 	<color
 		name="colorPrimary">#bb1919</color>
 	<color
-		name="colorPrimaryDark">#303F9F</color>
+		name="colorPrimaryDark">#781010</color>
 	<color
-		name="colorAccent">#FF4081</color>
+		name="colorAccent">#bb1919</color>
 		<color
 		name="splash_background">#bb1919</color>
 </resources>
