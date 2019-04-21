@@ -81,5 +81,17 @@ namespace RSS.Localization {
                 return ResourceManager.GetString("ErrorLabelText", resourceCulture);
             }
         }
+        
+        public static string SavedForOffline {
+            get {
+                return ResourceManager.GetString("SavedForOffline", resourceCulture);
+            }
+        }
+        
+        public static string RemovedFromOffline {
+            get {
+                return ResourceManager.GetString("RemovedFromOffline", resourceCulture);
+            }
+        }
     }
 }

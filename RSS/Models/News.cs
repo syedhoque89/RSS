@@ -33,8 +33,16 @@ namespace RSS.Models
 
 		void OnSaveOfflineCommand(string url)
 		{
-			SavedForOffline = !SavedForOffline;
-			DisplayToastCommand.Execute("Saved for offline viewing", true);
+			if (!SavedForOffline)
+			{
+				SavedForOffline = true;
+				DisplayToastCommand.Execute(Localization.Resources.SavedForOffline, true);
+			}
+			else
+			{
+				SavedForOffline = false;
+				DisplayToastCommand.Execute(Localization.Resources.RemovedFromOffline, true);
+			}
 		}
 
 		public async Task OnNavigateCommand(string uri)

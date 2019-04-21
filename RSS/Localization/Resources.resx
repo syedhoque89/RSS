@@ -53,4 +53,14 @@
             xml:space="preserve">
     <value>Oh dear! Something went wrong...</value>
   </data>
+    <data
+            name="SavedForOffline"
+            xml:space="preserve">
+    <value>Saved for offline viewing</value>
+  </data>
+    <data
+            name="RemovedFromOffline"
+            xml:space="preserve">
+    <value>Removed from offline viewing</value>
+  </data>
 </root>
